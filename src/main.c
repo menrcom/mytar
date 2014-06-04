@@ -11,7 +11,7 @@ int main(int argc, char **argv)
 	}
 
 
-	!open_archive_file(&archive);
+	open_archive_file(&archive);
 
 
 	switch (archive.command) {
