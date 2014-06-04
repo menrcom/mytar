@@ -46,6 +46,24 @@ int append_file(struct archive *archive, char *file_name)
 }
 
 
+int write_archive_data(struct archive *archive, int option_index, int argc, char **argv)
+{
+
+	check_io_errors(lseek(archive->fd, -archive->headers_offset, SEEK_END), "lseek()");
+
+	int index;
+
+	for (index = option_index; index < argc; index++) {
+		char *cur_file_name = argv[index];
+		printf("Archive %s: writing file %s\n", archive->file_name, cur_file_name);
+		append_file(archive, cur_file_name);
+	}
+	
+	return 0;
+}
+
+
+
 /*
  * Local variables:
  *  c-file-style: "linux"
