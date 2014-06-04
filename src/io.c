@@ -19,13 +19,8 @@ int check_io_errors(int ret_code, const char *operation)
 
 int open_archive_file(struct archive *archive)
 {
-	if ('-' == archive->file_name[0])
-		archive->fd = STDIN_FILENO;
-	else {
-		archive->fd = open(archive->file_name, archive->fmode, S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP);
-		check_io_errors(archive->fd, "open()");		
-	}
-
+	archive->fd = open(archive->file_name, archive->fmode, S_IRUSR|S_IWUSR|S_IRGRP|S_IWGRP);
+	check_io_errors(archive->fd, "open()");		
 	return 1;
 }
 
