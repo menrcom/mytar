@@ -26,23 +26,23 @@ int process_command_line(struct archive *a, int argc, char **argv)
 		c = getopt_long(argc, argv, "ctaf:", long_options, NULL);
 		switch (c) {
 		case 'c':
-			archive.command = COM_CREATE;
-			archive.fmode = O_RDWR|O_CREAT|O_EXCL;
+			a->command = COM_CREATE;
+			a->fmode = O_RDWR|O_CREAT|O_EXCL;
 			break;
 		case 't':
 
-			archive.command = COM_LIST;
-			archive.fmode = O_RDONLY;
+			a->command = COM_LIST;
+			a->fmode = O_RDONLY;
 
 			break;
 
 		case 'a':
-			archive.command = COM_APPEND;
-			archive.fmode = O_RDWR|O_APPEND;
+			a->command = COM_APPEND;
+			a->fmode = O_RDWR|O_APPEND;
 			break;
 
 		case 'f':
-			archive.file_name = optarg;
+			a->file_name = optarg;
 			break;
 
 		case -1:
@@ -59,9 +59,9 @@ int process_command_line(struct archive *a, int argc, char **argv)
 
 	/* argv[option_index] == file1 */
 
-	archive.append_files_count = argc - option_index;
+	a->append_files_count = argc - option_index;
 
-	if (!archive.file_name)
+	if (!a->file_name)
 		return 0;
 
 	return 1;

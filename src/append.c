@@ -52,7 +52,7 @@ int write_archive_data(struct archive *archive, int argc, char **argv)
 
 	int index;
 
-	for (index = argc - archive->files_count; index < argc; index++) {
+	for (index = argc - archive->append_files_count; index < argc; index++) {
 		char *cur_file_name = argv[index];
 		printf("Archive %s: writing file %s\n", archive->file_name, cur_file_name);
 		append_file(archive, cur_file_name);
