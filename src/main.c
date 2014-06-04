@@ -18,7 +18,7 @@ int main(int argc, char **argv)
 	case COM_APPEND:
 	case COM_CREATE:
 		read_archive_header(&archive);
-		write_archive_data(&archive, option_index, argc, argv);
+		write_archive_data(&archive, argc, argv);
 		write_archive_header(&archive);
 		break;
 

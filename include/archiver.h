@@ -54,7 +54,7 @@ int check_io_errors(int ret_code, const char *operation);
 int open_archive_file(struct archive *archive);
 
 int append_file(struct archive *archive, char *file_name);
-int write_archive_data(struct archive *archive, int option_index, int argc, char **argv);
+int write_archive_data(struct archive *archive, int argc, char **argv);
 
 int list_archive_content(struct archive *archive);
 
